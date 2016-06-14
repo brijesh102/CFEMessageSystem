@@ -84,13 +84,63 @@ namespace CenterFaculty.Controller
             {
                 var user = new CFEUser
                 {
+                    Id = (int)currentRow["Id"],
                     Fname = currentRow["Fname"].ToString(),
                     Lname = currentRow["Lname"].ToString(),
-                    Email = currentRow["Email"].ToString()
+                    Email = currentRow["Email"].ToString(),
+                    Role = currentRow["Role"].ToString()
                 };
                 users.Add(user);
             }
             return users;
+        }
+
+        public IEnumerable<MessageModel> GetAllMessages()
+        {
+            const string selectQueryStatement = @"SELECT * FROM Message ORDER BY DATE ASC";
+            using (SqlConnection defaultSqlConnection = new SqlConnection(DatabaseConnectionString))
+            {
+                defaultSqlConnection.Open();
+                DataTable queryResult = new DataTable();
+
+                using (SqlCommand queryCommand = new SqlCommand(selectQueryStatement, defaultSqlConnection))
+                {
+                    var sqlReader = queryCommand.ExecuteReader();
+                    queryResult.Load(sqlReader);
+                }
+
+                var messages = BuildMessages(queryResult);
+                return messages;
+            }
+        }
+
+        private List<MessageModel> BuildMessages(DataTable dataTable)
+        {
+            var messages = new List<MessageModel>();
+
+            foreach (DataRow currentRow in dataTable.Rows)
+            {
+                var message = new MessageModel
+                {
+                    Id = (int)currentRow["Id"],
+                    Fname = currentRow["Fname"].ToString(),
+                    Lname = currentRow["Lname"].ToString(),
+                    Type = (Entities.Type) Enum.Parse(typeof(Entities.Type), currentRow["Type"].ToString(), true),
+                    Category = (Category) Enum.Parse(typeof(Category), currentRow["Category"].ToString(),true),
+                    Date = (DateTime?)currentRow["Date"],
+                    Department = currentRow["Department"].ToString(),
+                    Description = currentRow["Description"].ToString(),
+                    Detail = currentRow["Detail"].ToString(),
+                    Email = currentRow["Email"].ToString(),
+                    MessageBox = currentRow["Message"].ToString(),
+                    Phone = currentRow["Phone"].ToString(),
+                    StaffName = currentRow["StaffName"].ToString(),
+                    Users = currentRow["SendTo"].ToString(),
+                    Suffix = (Suffix) Enum.Parse(typeof(Suffix), currentRow["Suffix"].ToString(),true)
+                };
+                messages.Add(message);
+            }
+            return messages;
         }
 
         public IEnumerable<Problem> GetProblemDetailBySubcategory(string subCategoryName)
@@ -141,6 +191,7 @@ namespace CenterFaculty.Controller
         {
             try
             {
+                //string temp = messageBox.Category.ToString();
                 const string selectQueryStatement = @"INSERT INTO Message(Type, Category, Date, Suffix, Fname, Lname, Department, Phone, Email, Description, Detail, Message, StaffName, SendTo)
                                                     Values(@TYPE, @CATEGORY, @DATE, @SUFFIX, @FNAME, @LNAME, @DEPARTMENT, @PHONE, @EMAIL, @DESCRIPTION, @DETAIL, @MESSAGE, @STAFFNAME, @SENDTO)";
                 using (SqlConnection defaultSqlConnection = new SqlConnection(DatabaseConnectionString))
@@ -150,7 +201,7 @@ namespace CenterFaculty.Controller
 
                     using (SqlCommand queryCommand = new SqlCommand(selectQueryStatement, defaultSqlConnection))
                     {
-                        queryCommand.Parameters.AddWithValue("@TYPE", messageBox.Type);
+                        queryCommand.Parameters.AddWithValue("@TYPE", messageBox.Type.ToString());
                         queryCommand.Parameters.AddWithValue("@CATEGORY", messageBox.Category);
                         queryCommand.Parameters.AddWithValue("@DATE", messageBox.Date);
                         queryCommand.Parameters.AddWithValue("@SUFFIX", messageBox.Suffix);
@@ -169,7 +220,122 @@ namespace CenterFaculty.Controller
                     }
                 }
             }
-            catch(SqlException e)
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool CheckPasscode(string passcode, string role)
+        {
+            try
+            {
+                const string selectQueryStatement = @"SELECT * FROM Account WHERE Passcode = @PASSCODE AND Role = @ROLE";
+                using (SqlConnection defaultSqlConnection = new SqlConnection(DatabaseConnectionString))
+                {
+                    defaultSqlConnection.Open();
+                    DataTable queryResult = new DataTable();
+
+                    using (SqlCommand queryCommand = new SqlCommand(selectQueryStatement, defaultSqlConnection))
+                    {
+                        queryCommand.Parameters.AddWithValue("@PASSCODE", passcode);
+                        queryCommand.Parameters.AddWithValue("@ROLE", role);
+                        var sqlReader = queryCommand.ExecuteReader();
+                        queryResult.Load(sqlReader);
+                    }
+                    if (queryResult.Rows.Count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            
+        }
+
+
+        public bool UpdateUser(CFEUser user)
+        {
+            try
+            {
+                //string temp = messageBox.Category.ToString();
+                const string selectQueryStatement = @"UPDATE CFEUser SET Fname = @FNAME, Lname = @LNAME, EMAIL = @EMAIL, Role = @ROLE WHERE Id = @ID";
+                using (SqlConnection defaultSqlConnection = new SqlConnection(DatabaseConnectionString))
+                {
+                    defaultSqlConnection.Open();
+                    DataTable queryResult = new DataTable();
+
+                    using (SqlCommand queryCommand = new SqlCommand(selectQueryStatement, defaultSqlConnection))
+                    {
+                        queryCommand.Parameters.AddWithValue("@FNAME", user.Fname);
+                        queryCommand.Parameters.AddWithValue("@LNAME", user.Lname);
+                        queryCommand.Parameters.AddWithValue("@EMAIL",user.Email );
+                        queryCommand.Parameters.AddWithValue("@ROLE", user.Role);
+                        queryCommand.Parameters.AddWithValue("@ID", user.Id);
+                        queryCommand.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteUser(CFEUser user)
+        {
+            try
+            {
+                //string temp = messageBox.Category.ToString();
+                const string selectQueryStatement = @"DELETE CFEUser WHERE Id = @ID";
+                using (SqlConnection defaultSqlConnection = new SqlConnection(DatabaseConnectionString))
+                {
+                    defaultSqlConnection.Open();
+                    DataTable queryResult = new DataTable();
+
+                    using (SqlCommand queryCommand = new SqlCommand(selectQueryStatement, defaultSqlConnection))
+                    {
+                        queryCommand.Parameters.AddWithValue("@ID", user.Id);
+                        queryCommand.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool InsertNewUser(CFEUser user)
+        {
+            try
+            {
+                //string temp = messageBox.Category.ToString();
+                const string selectQueryStatement = @"INSERT INTO CFEUser(Fname, Lname, Email, Role) Values(@FNAME, @LNAME, @EMAIL, @ROLE)";
+                using (SqlConnection defaultSqlConnection = new SqlConnection(DatabaseConnectionString))
+                {
+                    defaultSqlConnection.Open();
+                    DataTable queryResult = new DataTable();
+
+                    using (SqlCommand queryCommand = new SqlCommand(selectQueryStatement, defaultSqlConnection))
+                    {
+                        queryCommand.Parameters.AddWithValue("@FNAME", user.Fname);
+                        queryCommand.Parameters.AddWithValue("@LNAME", user.Lname);
+                        queryCommand.Parameters.AddWithValue("@EMAIL", user.Email);
+                        queryCommand.Parameters.AddWithValue("@ROLE", user.Role);
+                        queryCommand.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch
             {
                 return false;
             }

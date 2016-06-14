@@ -16,6 +16,7 @@ namespace CenterFaculty.Forms
 {
     public partial class frmCategory : MetroFramework.Forms.MetroForm
     {
+        private MetroForm frmHome;
         private MetroForm frmMoodle;
         private MetroForm frmMessage;
         private MessageModel MessageFields { get; set; }
@@ -106,6 +107,24 @@ namespace CenterFaculty.Forms
         private void subcategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (frmHome == null)
+            {
+                frmHome = new frmHome();
+                frmHome.FormClosed += FrmHome_FormClosed; ; ; ;
+            }
+            frmHome.StyleManager = StyleManager;
+            frmHome.Show(this);
+            Hide();
+        }
+
+        private void FrmHome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmHome = null;
+            Application.ExitThread();
         }
     }
 }

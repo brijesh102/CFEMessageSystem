@@ -29,21 +29,21 @@ namespace CenterFaculty.Entities
 
     public enum Type
     {
-        WalkIn,
-        Call
+        WalkIn = 0,
+        Call = 1
     }
 
     public enum Suffix
     {
-        Mr,
-        Mrs
+        Mr = 0,
+        Mrs = 1
     }
 
     public enum Category
     {
-        Moodle,
-        Project,
-        Posters,
-        Other
+        Moodle = 0,
+        Project = 1,
+        Posters = 2,
+        Other = 3
     }
 }

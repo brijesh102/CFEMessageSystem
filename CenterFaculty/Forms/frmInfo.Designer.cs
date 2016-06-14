@@ -137,7 +137,7 @@
             this.lnameInput.SelectionLength = 0;
             this.lnameInput.SelectionStart = 0;
             this.lnameInput.Size = new System.Drawing.Size(257, 23);
-            this.lnameInput.TabIndex = 34;
+            this.lnameInput.TabIndex = 2;
             this.lnameInput.Text = "Last Name";
             this.lnameInput.UseSelectable = true;
             this.lnameInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -175,7 +175,7 @@
             this.btnNextTab.Location = new System.Drawing.Point(680, 323);
             this.btnNextTab.Name = "btnNextTab";
             this.btnNextTab.Size = new System.Drawing.Size(165, 57);
-            this.btnNextTab.TabIndex = 30;
+            this.btnNextTab.TabIndex = 6;
             this.btnNextTab.Text = "Next";
             this.btnNextTab.UseSelectable = true;
             this.btnNextTab.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@
             this.metroRadioButton4.Margin = new System.Windows.Forms.Padding(4);
             this.metroRadioButton4.Name = "metroRadioButton4";
             this.metroRadioButton4.Size = new System.Drawing.Size(50, 17);
-            this.metroRadioButton4.TabIndex = 29;
+            this.metroRadioButton4.TabIndex = 0;
             this.metroRadioButton4.TabStop = true;
             this.metroRadioButton4.Text = "Mrs.";
             this.metroRadioButton4.UseSelectable = true;
@@ -201,7 +201,7 @@
             this.metroRadioButton6.Margin = new System.Windows.Forms.Padding(4);
             this.metroRadioButton6.Name = "metroRadioButton6";
             this.metroRadioButton6.Size = new System.Drawing.Size(44, 17);
-            this.metroRadioButton6.TabIndex = 29;
+            this.metroRadioButton6.TabIndex = 0;
             this.metroRadioButton6.TabStop = true;
             this.metroRadioButton6.Text = "Mr.";
             this.metroRadioButton6.UseSelectable = true;
@@ -231,7 +231,7 @@
             this.fnameInput.SelectionLength = 0;
             this.fnameInput.SelectionStart = 0;
             this.fnameInput.Size = new System.Drawing.Size(257, 23);
-            this.fnameInput.TabIndex = 27;
+            this.fnameInput.TabIndex = 1;
             this.fnameInput.Text = "First Name";
             this.fnameInput.UseSelectable = true;
             this.fnameInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -271,7 +271,7 @@
             this.emailInput.SelectionLength = 0;
             this.emailInput.SelectionStart = 0;
             this.emailInput.Size = new System.Drawing.Size(469, 23);
-            this.emailInput.TabIndex = 25;
+            this.emailInput.TabIndex = 5;
             this.emailInput.UseSelectable = true;
             this.emailInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.emailInput.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -310,7 +310,7 @@
             this.phoneInput.SelectionLength = 0;
             this.phoneInput.SelectionStart = 0;
             this.phoneInput.Size = new System.Drawing.Size(469, 23);
-            this.phoneInput.TabIndex = 25;
+            this.phoneInput.TabIndex = 4;
             this.phoneInput.UseSelectable = true;
             this.phoneInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.phoneInput.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -349,7 +349,7 @@
             this.departmentInput.SelectionLength = 0;
             this.departmentInput.SelectionStart = 0;
             this.departmentInput.Size = new System.Drawing.Size(469, 23);
-            this.departmentInput.TabIndex = 25;
+            this.departmentInput.TabIndex = 3;
             this.departmentInput.UseSelectable = true;
             this.departmentInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.departmentInput.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);

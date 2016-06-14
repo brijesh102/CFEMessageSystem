@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategory));
             this.categoryPanel = new System.Windows.Forms.Panel();
             this.subCatergoryPanel = new System.Windows.Forms.Panel();
+            this.btnback = new System.Windows.Forms.Button();
             this.nxtToInfoBtn = new MetroFramework.Controls.MetroButton();
             this.label1 = new System.Windows.Forms.Label();
             this.subcategoryComboBox = new MetroFramework.Controls.MetroComboBox();
@@ -39,8 +40,8 @@
             this.otherTile = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.posterTile = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.moodleTile = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
-            this.btnback = new System.Windows.Forms.Button();
             this.subCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.categoryPanel.SuspendLayout();
             this.subCatergoryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subCategoryBindingSource)).BeginInit();
@@ -53,6 +54,7 @@
             this.categoryPanel.Controls.Add(this.otherTile);
             this.categoryPanel.Controls.Add(this.posterTile);
             this.categoryPanel.Controls.Add(this.moodleTile);
+            this.categoryPanel.Controls.Add(this.button1);
             this.categoryPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.categoryPanel.Location = new System.Drawing.Point(20, 60);
             this.categoryPanel.Name = "categoryPanel";
@@ -65,10 +67,23 @@
             this.subCatergoryPanel.Controls.Add(this.nxtToInfoBtn);
             this.subCatergoryPanel.Controls.Add(this.label1);
             this.subCatergoryPanel.Controls.Add(this.subcategoryComboBox);
+            this.subCatergoryPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.subCatergoryPanel.Location = new System.Drawing.Point(0, 0);
             this.subCatergoryPanel.Name = "subCatergoryPanel";
             this.subCatergoryPanel.Size = new System.Drawing.Size(960, 520);
             this.subCatergoryPanel.TabIndex = 2;
+            // 
+            // btnback
+            // 
+            this.btnback.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnback.Image = ((System.Drawing.Image)(resources.GetObject("btnback.Image")));
+            this.btnback.Location = new System.Drawing.Point(758, 72);
+            this.btnback.Name = "btnback";
+            this.btnback.Size = new System.Drawing.Size(87, 48);
+            this.btnback.TabIndex = 10;
+            this.btnback.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnback.UseVisualStyleBackColor = true;
+            this.btnback.Click += new System.EventHandler(this.btnback_Click);
             // 
             // nxtToInfoBtn
             // 
@@ -152,21 +167,21 @@
             this.moodleTile.UseVisualStyleBackColor = true;
             this.moodleTile.Click += new System.EventHandler(this.moodleTile_Click);
             // 
-            // btnback
-            // 
-            this.btnback.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnback.Image = ((System.Drawing.Image)(resources.GetObject("btnback.Image")));
-            this.btnback.Location = new System.Drawing.Point(758, 72);
-            this.btnback.Name = "btnback";
-            this.btnback.Size = new System.Drawing.Size(87, 48);
-            this.btnback.TabIndex = 10;
-            this.btnback.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnback.UseVisualStyleBackColor = true;
-            this.btnback.Click += new System.EventHandler(this.btnback_Click);
-            // 
             // subCategoryBindingSource
             // 
             this.subCategoryBindingSource.DataSource = typeof(CenterFaculty.Entities.SubCategory);
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(870, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 48);
+            this.button1.TabIndex = 11;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmCategory
             // 
@@ -198,5 +213,6 @@
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroButton nxtToInfoBtn;
         private System.Windows.Forms.Button btnback;
+        private System.Windows.Forms.Button button1;
     }
 }

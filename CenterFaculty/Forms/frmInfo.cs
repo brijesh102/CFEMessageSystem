@@ -29,6 +29,7 @@ namespace CenterFaculty.Forms
 
         private void frmInfo_Load(object sender, EventArgs e)
         {
+            fnameInput.Focus();
             fnameInput.GotFocus += FnameInput_GotFocus;
             fnameInput.LostFocus += FnameInput_LostFocus;
 

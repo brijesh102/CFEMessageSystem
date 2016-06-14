@@ -18,3 +18,5 @@ D:\TEST1\CenterFaculty\CenterFaculty\obj\Debug\CenterFaculty.Forms.frmCategory.r
 D:\TEST1\CenterFaculty\CenterFaculty\obj\Debug\CenterFaculty.Forms.frmInfo.resources
 D:\TEST1\CenterFaculty\CenterFaculty\obj\Debug\CenterFaculty.Forms.frmMessage.resources
 D:\TEST1\CenterFaculty\CenterFaculty\obj\Debug\CenterFaculty.Forms.frmMoodle.resources
+D:\TEST1\CenterFaculty\CenterFaculty\obj\Debug\CenterFaculty.Forms.frmHistory.resources
+D:\TEST1\CenterFaculty\CenterFaculty\obj\Debug\CenterFaculty.Forms.frmSettings.resources

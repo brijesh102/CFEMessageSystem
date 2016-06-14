@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.settingTile = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.historyTile = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.messageTile = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.typePanel = new System.Windows.Forms.Panel();
             this.walkinTile = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.callTile = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnback = new System.Windows.Forms.Button();
             this.typePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +80,7 @@
             // 
             // typePanel
             // 
+            this.typePanel.Controls.Add(this.btnback);
             this.typePanel.Controls.Add(this.walkinTile);
             this.typePanel.Controls.Add(this.callTile);
             this.typePanel.Location = new System.Drawing.Point(20, 60);
@@ -109,6 +112,18 @@
             this.callTile.UseVisualStyleBackColor = true;
             this.callTile.Click += new System.EventHandler(this.callTile_Click);
             // 
+            // btnback
+            // 
+            this.btnback.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnback.Image = ((System.Drawing.Image)(resources.GetObject("btnback.Image")));
+            this.btnback.Location = new System.Drawing.Point(870, 3);
+            this.btnback.Name = "btnback";
+            this.btnback.Size = new System.Drawing.Size(87, 48);
+            this.btnback.TabIndex = 11;
+            this.btnback.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnback.UseVisualStyleBackColor = true;
+            this.btnback.Click += new System.EventHandler(this.btnback_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -135,5 +150,6 @@
         private System.Windows.Forms.Panel typePanel;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton callTile;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton walkinTile;
+        private System.Windows.Forms.Button btnback;
     }
 }
