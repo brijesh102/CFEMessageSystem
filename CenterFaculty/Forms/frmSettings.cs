@@ -26,8 +26,9 @@ namespace CenterFaculty.Forms
 
         private void frmSettings_Load(object sender, EventArgs e)
         {
-            //mainPanel.Visible = false;
+            mainPanel.Visible = false;
             editUserPanel.Visible = false;
+            editPasscodePanel.Visible = false;
             txtpasswordBox.Focus();
             txtpasswordBox.KeyPress += TxtpasswordBox_KeyPress;
             SetDataGrid();
@@ -59,11 +60,23 @@ namespace CenterFaculty.Forms
             Checklogin();
         }
 
+        private void btnBackHome_Click(object sender, EventArgs e)
+        {
+            if (frmHome == null)
+            {
+                frmHome = new frmHome();
+                frmHome.FormClosed += FrmHome_FormClosed;
+            }
+            frmHome.StyleManager = StyleManager;
+            frmHome.Show(this);
+            Hide();
+        }
+
         private void Checklogin()
         {
             if (txtpasswordBox.Text == "")
             {
-                MetroMessageBox.Show(this, "Please provide UserName and Password", "Oops!", MessageBoxButtons.OK);
+                MetroMessageBox.Show(this, "Please provide the Passcode", "Oops!", MessageBoxButtons.OK);
                 return;
             }
             try
@@ -88,12 +101,27 @@ namespace CenterFaculty.Forms
         private void btnback_Click(object sender, EventArgs e)
         {
             mainPanel.Visible = false;
+            if (frmHome == null)
+            {
+                frmHome = new frmHome();
+                frmHome.FormClosed += FrmHome_FormClosed;
+            }
+            frmHome.StyleManager = StyleManager;
+            frmHome.Show(this);
+            Hide();
 
+        }
+
+        private void FrmHome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmHome = null;
+            Application.ExitThread();
         }
 
         private void btnNewUser_Click(object sender, EventArgs e)
         {
             editUserPanel.Visible = true;
+            editPasscodePanel.Visible = false;
             txtFirstName.Focus();
             btnDelete.Visible = false;
             btnSave.Visible = false;
@@ -198,6 +226,71 @@ namespace CenterFaculty.Forms
             txtLastName.Text = String.Empty;
             txtEmail.Text = String.Empty;
             txtRole.Text = String.Empty;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            editPasscodePanel.Visible = false;
+            ResetPasscodeDialog();
+        }
+
+        private void ResetPasscodeDialog()
+        {
+            Passcode _pass = command.GetPasscode();
+            txtUserCurrent.Text = _pass.UserPasscode;
+            txtUserNew.Text = "";
+            txtAdminCurrent.Text = _pass.AdminPasscode;
+            txtAdminNew.Text = "";
+        }
+
+        private void changePasscode_Click(object sender, EventArgs e)
+        {
+            ResetPasscodeDialog();
+            editUserPanel.Visible = false;
+            editPasscodePanel.Visible = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            editPasscodePanel.Visible = false;
+            ResetPasscodeDialog();
+        }
+
+        private void btnSavePasscode_Click(object sender, EventArgs e)
+        {
+            if(txtAdminNew.Text != "" || txtUserNew.Text != "")
+            {
+                if(txtAdminNew.Text != "" && txtUserNew.Text != "")
+                {
+                    CommitPasscode(txtAdminNew.Text, "Admin");
+                    CommitPasscode(txtUserNew.Text, "User");
+                }
+                else if(txtAdminNew.Text != "")
+                {
+                    CommitPasscode(txtAdminNew.Text, "Admin");
+                }
+                else if(txtUserNew.Text != "")
+                {
+                    CommitPasscode(txtUserNew.Text, "User");
+                }
+            }
+            else
+            {
+                MetroMessageBox.Show(this, "Nothing's been changed.");
+                ResetPasscodeDialog();
+                editPasscodePanel.Visible = false;
+            }
+        }
+
+        private void CommitPasscode(string text, string role)
+        {
+            bool result = command.UpdatePasscode(text, role);
+            if (result)
+                MetroMessageBox.Show(this, "Passcode has been changed.");
+            else
+                MetroMessageBox.Show(this, "Something went wrong.");
+            ResetPasscodeDialog();
+            editPasscodePanel.Visible = false;
         }
     }
 }

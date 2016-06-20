@@ -32,6 +32,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.editPasscodePanel = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAdminNew = new MetroFramework.Controls.MetroTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtAdminCurrent = new MetroFramework.Controls.MetroTextBox();
+            this.txtUserNew = new MetroFramework.Controls.MetroTextBox();
+            this.txtUserCurrent = new MetroFramework.Controls.MetroTextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnCancel = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnSavePasscode = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.editUserPanel = new System.Windows.Forms.Panel();
             this.btnSaveUser = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -45,9 +59,11 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.changePasscode = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.btnNewUser = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.btnback = new System.Windows.Forms.Button();
             this.userGridView = new System.Windows.Forms.DataGridView();
+            this.btnBackHome = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtpasswordBox = new System.Windows.Forms.RichTextBox();
@@ -55,6 +71,8 @@
             this.cFEUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.mainPanel.SuspendLayout();
+            this.editPasscodePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.editUserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userGridView)).BeginInit();
@@ -65,6 +83,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.mainPanel);
+            this.panel1.Controls.Add(this.btnBackHome);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtpasswordBox);
@@ -76,7 +95,9 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.editPasscodePanel);
             this.mainPanel.Controls.Add(this.editUserPanel);
+            this.mainPanel.Controls.Add(this.changePasscode);
             this.mainPanel.Controls.Add(this.btnNewUser);
             this.mainPanel.Controls.Add(this.btnback);
             this.mainPanel.Controls.Add(this.userGridView);
@@ -85,6 +106,240 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(960, 520);
             this.mainPanel.TabIndex = 3;
+            // 
+            // editPasscodePanel
+            // 
+            this.editPasscodePanel.BackColor = System.Drawing.Color.Silver;
+            this.editPasscodePanel.Controls.Add(this.label11);
+            this.editPasscodePanel.Controls.Add(this.label8);
+            this.editPasscodePanel.Controls.Add(this.label10);
+            this.editPasscodePanel.Controls.Add(this.label9);
+            this.editPasscodePanel.Controls.Add(this.label7);
+            this.editPasscodePanel.Controls.Add(this.txtAdminNew);
+            this.editPasscodePanel.Controls.Add(this.label6);
+            this.editPasscodePanel.Controls.Add(this.txtAdminCurrent);
+            this.editPasscodePanel.Controls.Add(this.txtUserNew);
+            this.editPasscodePanel.Controls.Add(this.txtUserCurrent);
+            this.editPasscodePanel.Controls.Add(this.pictureBox2);
+            this.editPasscodePanel.Controls.Add(this.btnCancel);
+            this.editPasscodePanel.Controls.Add(this.btnSavePasscode);
+            this.editPasscodePanel.Location = new System.Drawing.Point(6, 66);
+            this.editPasscodePanel.Name = "editPasscodePanel";
+            this.editPasscodePanel.Size = new System.Drawing.Size(416, 425);
+            this.editPasscodePanel.TabIndex = 35;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(232, 202);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 17);
+            this.label11.TabIndex = 36;
+            this.label11.Text = "New";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(232, 89);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 17);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "New";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(46, 202);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 17);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Present";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(41, 170);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(174, 25);
+            this.label9.TabIndex = 35;
+            this.label9.Text = "Admin Passcode";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(46, 91);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 17);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Present";
+            // 
+            // txtAdminNew
+            // 
+            // 
+            // 
+            // 
+            this.txtAdminNew.CustomButton.Image = null;
+            this.txtAdminNew.CustomButton.Location = new System.Drawing.Point(103, 1);
+            this.txtAdminNew.CustomButton.Name = "";
+            this.txtAdminNew.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtAdminNew.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtAdminNew.CustomButton.TabIndex = 1;
+            this.txtAdminNew.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtAdminNew.CustomButton.UseSelectable = true;
+            this.txtAdminNew.CustomButton.Visible = false;
+            this.txtAdminNew.Lines = new string[0];
+            this.txtAdminNew.Location = new System.Drawing.Point(233, 222);
+            this.txtAdminNew.MaxLength = 32767;
+            this.txtAdminNew.Name = "txtAdminNew";
+            this.txtAdminNew.PasswordChar = '\0';
+            this.txtAdminNew.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtAdminNew.SelectedText = "";
+            this.txtAdminNew.SelectionLength = 0;
+            this.txtAdminNew.SelectionStart = 0;
+            this.txtAdminNew.Size = new System.Drawing.Size(125, 23);
+            this.txtAdminNew.TabIndex = 34;
+            this.txtAdminNew.UseSelectable = true;
+            this.txtAdminNew.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtAdminNew.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(41, 59);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(158, 25);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "User Passcode";
+            // 
+            // txtAdminCurrent
+            // 
+            // 
+            // 
+            // 
+            this.txtAdminCurrent.CustomButton.Image = null;
+            this.txtAdminCurrent.CustomButton.Location = new System.Drawing.Point(103, 1);
+            this.txtAdminCurrent.CustomButton.Name = "";
+            this.txtAdminCurrent.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtAdminCurrent.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtAdminCurrent.CustomButton.TabIndex = 1;
+            this.txtAdminCurrent.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtAdminCurrent.CustomButton.UseSelectable = true;
+            this.txtAdminCurrent.CustomButton.Visible = false;
+            this.txtAdminCurrent.Enabled = false;
+            this.txtAdminCurrent.Lines = new string[0];
+            this.txtAdminCurrent.Location = new System.Drawing.Point(47, 222);
+            this.txtAdminCurrent.MaxLength = 32767;
+            this.txtAdminCurrent.Name = "txtAdminCurrent";
+            this.txtAdminCurrent.PasswordChar = '\0';
+            this.txtAdminCurrent.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtAdminCurrent.SelectedText = "";
+            this.txtAdminCurrent.SelectionLength = 0;
+            this.txtAdminCurrent.SelectionStart = 0;
+            this.txtAdminCurrent.Size = new System.Drawing.Size(125, 23);
+            this.txtAdminCurrent.TabIndex = 34;
+            this.txtAdminCurrent.UseSelectable = true;
+            this.txtAdminCurrent.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtAdminCurrent.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtUserNew
+            // 
+            // 
+            // 
+            // 
+            this.txtUserNew.CustomButton.Image = null;
+            this.txtUserNew.CustomButton.Location = new System.Drawing.Point(103, 1);
+            this.txtUserNew.CustomButton.Name = "";
+            this.txtUserNew.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtUserNew.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtUserNew.CustomButton.TabIndex = 1;
+            this.txtUserNew.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtUserNew.CustomButton.UseSelectable = true;
+            this.txtUserNew.CustomButton.Visible = false;
+            this.txtUserNew.Lines = new string[0];
+            this.txtUserNew.Location = new System.Drawing.Point(233, 109);
+            this.txtUserNew.MaxLength = 32767;
+            this.txtUserNew.Name = "txtUserNew";
+            this.txtUserNew.PasswordChar = '\0';
+            this.txtUserNew.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtUserNew.SelectedText = "";
+            this.txtUserNew.SelectionLength = 0;
+            this.txtUserNew.SelectionStart = 0;
+            this.txtUserNew.Size = new System.Drawing.Size(125, 23);
+            this.txtUserNew.TabIndex = 34;
+            this.txtUserNew.UseSelectable = true;
+            this.txtUserNew.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtUserNew.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtUserCurrent
+            // 
+            // 
+            // 
+            // 
+            this.txtUserCurrent.CustomButton.Image = null;
+            this.txtUserCurrent.CustomButton.Location = new System.Drawing.Point(103, 1);
+            this.txtUserCurrent.CustomButton.Name = "";
+            this.txtUserCurrent.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtUserCurrent.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtUserCurrent.CustomButton.TabIndex = 1;
+            this.txtUserCurrent.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtUserCurrent.CustomButton.UseSelectable = true;
+            this.txtUserCurrent.CustomButton.Visible = false;
+            this.txtUserCurrent.Enabled = false;
+            this.txtUserCurrent.Lines = new string[0];
+            this.txtUserCurrent.Location = new System.Drawing.Point(47, 111);
+            this.txtUserCurrent.MaxLength = 32767;
+            this.txtUserCurrent.Name = "txtUserCurrent";
+            this.txtUserCurrent.PasswordChar = '\0';
+            this.txtUserCurrent.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtUserCurrent.SelectedText = "";
+            this.txtUserCurrent.SelectionLength = 0;
+            this.txtUserCurrent.SelectionStart = 0;
+            this.txtUserCurrent.Size = new System.Drawing.Size(125, 23);
+            this.txtUserCurrent.TabIndex = 34;
+            this.txtUserCurrent.UseSelectable = true;
+            this.txtUserCurrent.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtUserCurrent.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(351, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 33;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCancel.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Image = null;
+            this.btnCancel.Location = new System.Drawing.Point(212, 272);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(148, 57);
+            this.btnCancel.TabIndex = 32;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseSelectable = true;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSavePasscode
+            // 
+            this.btnSavePasscode.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnSavePasscode.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSavePasscode.Image = null;
+            this.btnSavePasscode.Location = new System.Drawing.Point(46, 272);
+            this.btnSavePasscode.Name = "btnSavePasscode";
+            this.btnSavePasscode.Size = new System.Drawing.Size(143, 57);
+            this.btnSavePasscode.TabIndex = 32;
+            this.btnSavePasscode.Text = "Save Changes";
+            this.btnSavePasscode.UseSelectable = true;
+            this.btnSavePasscode.UseVisualStyleBackColor = true;
+            this.btnSavePasscode.Click += new System.EventHandler(this.btnSavePasscode_Click);
             // 
             // editUserPanel
             // 
@@ -227,6 +482,20 @@
             this.txtFirstName.Size = new System.Drawing.Size(159, 22);
             this.txtFirstName.TabIndex = 0;
             // 
+            // changePasscode
+            // 
+            this.changePasscode.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.changePasscode.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changePasscode.Image = null;
+            this.changePasscode.Location = new System.Drawing.Point(177, 3);
+            this.changePasscode.Name = "changePasscode";
+            this.changePasscode.Size = new System.Drawing.Size(165, 57);
+            this.changePasscode.TabIndex = 33;
+            this.changePasscode.Text = "Change the Passcode";
+            this.changePasscode.UseSelectable = true;
+            this.changePasscode.UseVisualStyleBackColor = true;
+            this.changePasscode.Click += new System.EventHandler(this.changePasscode_Click);
+            // 
             // btnNewUser
             // 
             this.btnNewUser.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -262,6 +531,20 @@
             this.userGridView.RowTemplate.Height = 24;
             this.userGridView.Size = new System.Drawing.Size(954, 379);
             this.userGridView.TabIndex = 0;
+            // 
+            // btnBackHome
+            // 
+            this.btnBackHome.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBackHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackHome.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.btnBackHome.Location = new System.Drawing.Point(447, 231);
+            this.btnBackHome.Name = "btnBackHome";
+            this.btnBackHome.Size = new System.Drawing.Size(186, 65);
+            this.btnBackHome.TabIndex = 2;
+            this.btnBackHome.Text = "Cancel";
+            this.btnBackHome.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnBackHome.UseVisualStyleBackColor = true;
+            this.btnBackHome.Click += new System.EventHandler(this.btnBackHome_Click);
             // 
             // btnLogin
             // 
@@ -318,6 +601,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.mainPanel.ResumeLayout(false);
+            this.editPasscodePanel.ResumeLayout(false);
+            this.editPasscodePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.editUserPanel.ResumeLayout(false);
             this.editUserPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -357,5 +643,21 @@
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnSave;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnSaveUser;
+        private System.Windows.Forms.Panel editPasscodePanel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
+        private MetroFramework.Controls.MetroTextBox txtAdminNew;
+        private System.Windows.Forms.Label label6;
+        private MetroFramework.Controls.MetroTextBox txtAdminCurrent;
+        private MetroFramework.Controls.MetroTextBox txtUserNew;
+        private MetroFramework.Controls.MetroTextBox txtUserCurrent;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnCancel;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnSavePasscode;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton changePasscode;
+        private System.Windows.Forms.Button btnBackHome;
     }
 }

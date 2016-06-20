@@ -340,5 +340,72 @@ namespace CenterFaculty.Controller
                 return false;
             }
         }
+
+        public Passcode GetPasscode()
+        {
+            const string selectQueryStatement = @"SELECT * 
+                                    FROM Account";
+            using (SqlConnection defaultSqlConnection = new SqlConnection(DatabaseConnectionString))
+            {
+                defaultSqlConnection.Open();
+                DataTable queryResult = new DataTable();
+
+                using (SqlCommand queryCommand = new SqlCommand(selectQueryStatement, defaultSqlConnection))
+                {
+                    var sqlReader = queryCommand.ExecuteReader();
+                    queryResult.Load(sqlReader);
+                }
+
+                var passCode = BuildPasscode(queryResult);
+                return passCode;
+            }
+        }
+
+        private Passcode BuildPasscode(DataTable dataTable)
+        {
+            var passcode = new Passcode();
+            string role = "";
+            string pass= "";
+            foreach(DataRow currentRow in dataTable.Rows)
+            {
+                role = currentRow["Role"].ToString();
+                pass = currentRow["Passcode"].ToString();
+                if (role.Equals("Admin", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    passcode.AdminPasscode = pass;
+                }
+                else if (role.Equals("User", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    passcode.UserPasscode = pass;
+                }
+            }
+
+            return passcode;
+        }
+
+        public bool UpdatePasscode(string passcode, string role)
+        {
+            try
+            {
+                const string selectQueryStatement = @"UPDATE ACCOUNT SET Passcode = @PASSCODE WHERE ROLE = @ROLE";
+                using (SqlConnection defaultSqlConnection = new SqlConnection(DatabaseConnectionString))
+                {
+                    defaultSqlConnection.Open();
+                    DataTable queryResult = new DataTable();
+
+                    using (SqlCommand queryCommand = new SqlCommand(selectQueryStatement, defaultSqlConnection))
+                    {
+                        queryCommand.Parameters.AddWithValue("@PASSCODE", passcode);
+                        queryCommand.Parameters.AddWithValue("@ROLE", role);
+                        queryCommand.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
